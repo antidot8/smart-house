@@ -1,36 +1,64 @@
 package ru.netology;
 
 public class Radio {
-    private int currentStation;
+    private int currentStation = 0;
     private int maxStation = 9;
     private int minStation = 0;
     private int maxVolume = 10;
     private int minVolume = 0;
-    private int currentVolume;
+    private int currentVolume = 0;
 
-    public int setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
-            currentStation = 9;
-            return currentStation;
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < minStation) {
+            return;
         }
-        if (currentStation > 9) {
-            currentStation = 0;
-            return currentStation;
+        if (currentStation > maxStation) {
+            return;
         }
         this.currentStation = currentStation;
-        return currentStation;
     }
 
-    public int setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
-            currentVolume = 10;
-            return currentVolume;
+    public void setNextStation(int currentStation) {
+        if (currentStation >= maxStation) {
+            setCurrentStation(minStation);
+            return;
         }
-        if (currentVolume < 0) {
-            currentVolume = 0;
-            return currentVolume;
+        setCurrentStation(currentStation + 1);
+    }
+
+    public void setPrevStation(int currentStation) {
+        if (currentStation <= minStation) {
+            setCurrentStation(maxStation);
+            return;
         }
+        setCurrentStation(currentStation - 1);
+    }
+
+    public void setCurrentVolume(int currentVolume) {
         this.currentVolume = currentVolume;
+    }
+
+    public void setUpVolume(int currentVolume) {
+        if (currentVolume >= maxVolume) {
+            setCurrentVolume(maxVolume);
+            return;
+        }
+        setCurrentVolume(currentVolume + 1);
+    }
+
+    public void setDownVolume(int currentVolume) {
+        if (currentVolume <= minVolume) {
+            setCurrentVolume(minVolume);
+            return;
+        }
+        setCurrentVolume(currentVolume - 1);
+    }
+
+    public int getCurrentVolume() {
         return currentVolume;
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
     }
 }
