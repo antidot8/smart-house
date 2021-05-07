@@ -65,7 +65,7 @@ class RadioTest {
     @Test
     public void upVolumePositiveLimit() {
         radio.setUpVolume();
-        assertEquals(3, radio.getCurrentVolume());
+        assertEquals(2, radio.getCurrentVolume());
     }
 
     @Test
