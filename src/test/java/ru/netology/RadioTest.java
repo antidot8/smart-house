@@ -57,7 +57,8 @@ class RadioTest {
 
     @Test
     public void nextStationAboveLimitWithDefaultLimit() {
-        Radio radio = new Radio(10);
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
         radio.setNextStation();
         assertEquals(0, radio.getCurrentStation());
     }
@@ -71,7 +72,8 @@ class RadioTest {
 
     @Test
     public void prevStationUnderLimitWithDefaultLimit() {
-        Radio radio = new Radio(0);
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
         radio.setPrevStation();
         assertEquals(10, radio.getCurrentStation());
     }
